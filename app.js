@@ -4,17 +4,17 @@ $(document).ready(function(){
         let email = $("#email").val();
         let password = $("#password").val();
         // dokolku inputite se prazni se printaat errori vo sprotivno prakame ajax povik 
-        if(email == "" || email == undefined || email == null){
+        if(email === "" || email === undefined || email == null){
             showError("Email field can not be empty");
-        }else if(password == "" || password == undefined || password == null  || password.length < 6){
+        }else if(password === "" || password === undefined || password == null  || password.length < 6){
             showError("Password field must be at least 6 characters long")
         }else{
             let dataToSend = {
                 email: email,
                 password: password
-            }
+            };
     
-            $.post("registerAjax.php", dataToSend)
+            $.post("api/frontend/registerAjax.php", dataToSend)
             .then(function(data){
                 data = JSON.parse(data);
                 if(data.error){
@@ -45,7 +45,7 @@ $(document).ready(function(){
             let dataToSend = {
                 email: email,
                 password: password
-            }
+            };
     
             $.post("api/frontend/loginAjax.php", dataToSend)
                 .then(function(data){
